@@ -5,7 +5,7 @@ const colors = {
     300: '#1E2955',
   },
   _black: {
-    100: '#CBCDD7',
+    100: '#a6a7ac',
   },
 };
 
