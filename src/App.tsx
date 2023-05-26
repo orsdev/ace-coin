@@ -10,9 +10,15 @@ import {
   CardNumber,
   CustomButton,
   Header,
+  OrderInfo,
   Password,
+  Divider,
   ValidCards,
+  Total,
+  CreditCard,
+  SuccessModal,
 } from "@/components";
+import { useState } from "react";
 
 const ValidationSchema = Yup.object({
   cardType: Yup.string().oneOf(ValidCards, "Enter a valid card number"),
@@ -56,6 +62,8 @@ const ValidationSchema = Yup.object({
 });
 
 function App() {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       cartType: "",
@@ -66,8 +74,8 @@ function App() {
       cvv: "",
     },
     validationSchema: ValidationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: () => {
+      setIsOpenModal(true);
     },
   });
 
@@ -82,7 +90,15 @@ function App() {
       >
         <CloseIcon size="18px" />
       </Button>
-      <SimpleGrid gap="30px" templateColumns="1fr 300px" width="full">
+      <SimpleGrid
+        gap="40px"
+        rowGap="80px"
+        templateColumns={{ md: "1fr 300px" }}
+        width="full"
+        mt="20px"
+        alignItems="start"
+      >
+        {/* Form */}
         <Box>
           <Header />
           <form onSubmit={formik.handleSubmit}>
@@ -99,8 +115,45 @@ function App() {
             </Stack>
           </form>
         </Box>
-        <Box outline="2px solid green">2</Box>
+
+        {/* Order  */}
+        <Box
+          bg="_blue.100"
+          borderRadius="10px"
+          py="25px"
+          mt="60px"
+          pos="relative"
+        >
+          <Box
+            minH="50px"
+            px={{ base: "28px", xs: "39px" }}
+            top="0"
+            marginTop="-120px"
+            pos="sticky"
+          >
+            <CreditCard />
+          </Box>
+          <Box mt="50px" pos="relative" overflowX="hidden">
+            <Stack spacing="15px" px="39px">
+              <OrderInfo label="Company" value="Apple" />
+              <OrderInfo label="Order Number" value="1266201" />
+              <OrderInfo label="Company" value="MackBook Air" />
+              <OrderInfo label="VAT(20%)" value="$100.00" />
+            </Stack>
+            <Divider />
+            <Total amount={549.99} currency="USD" />
+          </Box>
+        </Box>
       </SimpleGrid>
+
+      {/* Modal */}
+      <SuccessModal
+        isOpen={isOpenModal}
+        onClose={() => {
+          setIsOpenModal(false);
+          formik.resetForm();
+        }}
+      />
     </DefaultLayout>
   );
 }

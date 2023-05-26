@@ -29,11 +29,13 @@ export const CardNumber: FC<InputProps> = ({ formik, name }) => {
   return (
     <Box width="full" mt="39px">
       <Flex alignItems="center" justifyContent="space-between">
-        <Label
-          labelFor="CardNumber"
-          title="Card Number"
-          info="Enter the 16-digit card number on the card"
-        />
+        <Box maxW="70%">
+          <Label
+            labelFor="CardNumber"
+            title="Card Number"
+            info="Enter the 16-digit card number on the card"
+          />
+        </Box>
         <Button
           variant="unstyled"
           display="flex"
@@ -94,6 +96,7 @@ export const CardNumber: FC<InputProps> = ({ formik, name }) => {
           )}
           <Cleave
             name={name}
+            value={formik.values[name]}
             className="cleave__input"
             placeholder="2412 - 7512 - 3412 - 3456"
             options={{

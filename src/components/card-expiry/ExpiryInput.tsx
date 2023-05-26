@@ -13,6 +13,7 @@ export const CardExpiryInput: FC<InputProps> = ({
     <Box width="full">
       <Input
         name={name}
+        value={formik.values[name]}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         placeholder={placeholder}

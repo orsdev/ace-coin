@@ -19,6 +19,7 @@ export const CardCVV: FC<InputProps> = ({ formik, name }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           placeholder="432"
+          value={formik.values[name]}
           textAlign="center"
           _placeholder={{
             opacity: 0.5,

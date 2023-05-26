@@ -12,7 +12,7 @@ export const Logo = () => {
       />
       <Heading as="h3" ml="12px" variant="h3" color="_blue.300">
         AceCoin
-        <Text as="span" fontWeight={400} color="#1e29558f">
+        <Text as="span" fontWeight={400} color="_black.200">
           Pay
         </Text>
       </Heading>

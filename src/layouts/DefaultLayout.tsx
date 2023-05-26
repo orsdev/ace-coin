@@ -11,11 +11,13 @@ export const DefaultLayout: FC<DefaultLayoutProps> = ({ children }) => {
       py="54px"
       px="34px"
       mx="auto"
-      outline="1px solid red"
-      maxW={868}
+      shadow="sm"
+      bg="whiteAlpha.100"
+      maxW={900}
       minH={150}
       sx={{
         pos: "relative",
+        top: "80px",
         display: "flex",
         flexDir: "column",
         alignItems: "center",

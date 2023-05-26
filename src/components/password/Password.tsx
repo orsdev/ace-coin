@@ -17,6 +17,7 @@ export const Password: FC<InputProps> = ({ formik, name }) => {
         <Input
           type="password"
           name={name}
+          value={formik.values[name]}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           sx={{

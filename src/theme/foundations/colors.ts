@@ -6,6 +6,7 @@ const colors = {
   },
   _black: {
     100: '#a6a7ac',
+    200: '#1e29558f',
   },
 };
 
